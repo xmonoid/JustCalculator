@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class ButtonNon0Listener implements ActionListener {
+public class DigitalButtonListener implements ActionListener {
 
     private final JTextField display;
     private final String number;
 
-    public ButtonNon0Listener(JTextField display, String number) {
+    public DigitalButtonListener(JTextField display, String number) {
         this.display = display;
         this.number = number;
     }

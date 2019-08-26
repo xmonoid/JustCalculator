@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class ButtonBackspaceListener implements ActionListener {
+public class DeleteButtonListener implements ActionListener {
 
     private final JTextField display;
 
-    public ButtonBackspaceListener(JTextField display) {
+    public DeleteButtonListener(JTextField display) {
         this.display = display;
     }
 
