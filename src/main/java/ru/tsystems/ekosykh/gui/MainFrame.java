@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainFrame extends JFrame {
-    private  static final String DEFAULT_NUM = "0";
+    private static final String DEFAULT_NUM = "0";
+    static final String CAPTURE = "Just Calculator";
 
     private Operation operation;
     private int first;
@@ -22,28 +23,33 @@ public class MainFrame extends JFrame {
     private JTextField display;
 
     public MainFrame() {
-        super("Just Calculator");
+        super(CAPTURE);
 
         display = new JTextField();
+        display.setName("display");
         display.setEditable(false);
         display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         display.setText(DEFAULT_NUM);
 
         JButton[] digits = new JButton[10];
         for (int i = 0; i < digits.length; i++) {
-            digits[i] = new JButton(Integer.toString(i));
-            DigitalButtonListener listener = new DigitalButtonListener(display, Integer.toString(i));
+            String digit = Integer.toString(i);
+            digits[i] = new JButton(digit);
+            digits[i].setName(digit);
+            DigitalButtonListener listener = new DigitalButtonListener(display, digit);
             digits[i].addActionListener(listener);
         }
 
         Map<String, JButton> operationalButtons = new HashMap<>();
         for (String operation: Arrays.asList("+", "-", "*", "/", "\\")) {
             JButton button = new JButton(operation);
+            button.setName(operation);
             button.addActionListener(new OperationalButtonListener(this, operation));
             operationalButtons.put(operation, button);
         }
 
         JButton buttonCalculate = new JButton("=");
+        buttonCalculate.setName("=");
         buttonCalculate.addActionListener(new CalculateButtonListener(this));
 
         JButton buttonDelete = new JButton("Delete");
