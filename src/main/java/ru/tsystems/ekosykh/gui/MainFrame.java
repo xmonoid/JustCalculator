@@ -55,6 +55,7 @@ public class MainFrame extends JFrame {
         JButton buttonDelete = new JButton("Delete");
         DeleteButtonListener deleteButtonListener = new DeleteButtonListener(display);
         buttonDelete.addActionListener(deleteButtonListener);
+        buttonDelete.setName(buttonDelete.getText());
         JButton bClear = new JButton("Clear");
         ClearButtonListener clearButtonListener = new ClearButtonListener(display, DEFAULT_NUM);
         bClear.addActionListener(clearButtonListener);
