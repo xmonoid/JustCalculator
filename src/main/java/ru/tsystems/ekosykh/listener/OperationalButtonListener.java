@@ -3,6 +3,8 @@ package ru.tsystems.ekosykh.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
 import ru.tsystems.ekosykh.gui.MainFrame;
 
 public class OperationalButtonListener implements ActionListener {
@@ -17,8 +19,10 @@ public class OperationalButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String first = frame.getDisplay().getText();
+        JTextField display = frame.getDisplay();
+        String first = display.getText();
         frame.setFirst(Integer.parseInt(first));
         frame.setOperation(operation);
+        display.setText(MainFrame.DEFAULT_NUM);
     }
 }

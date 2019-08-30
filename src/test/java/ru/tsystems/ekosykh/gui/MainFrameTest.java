@@ -21,6 +21,11 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
     private JButtonFixture delete;
     private JButtonFixture[] digits;
 
+    private JButtonFixture plus;
+    private JButtonFixture minus;
+
+    private JButtonFixture calculate;
+
     @Override
     protected void onSetUp() {
         application(Main.class).start();
@@ -35,12 +40,17 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
         for (int i = 0; i < digits.length; i++) {
             digits[i] = window.button(Integer.toString(i));
         }
+        plus = window.button("+");
+        minus = window.button("-");
+        calculate = window.button("=");
         window.focus();
     }
 
     @Override
     protected void onTearDown() {
-        window.cleanUp();
+        if (window != null) {
+            window.cleanUp();
+        }
     }
 
     @Test
@@ -93,5 +103,33 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
             delete.click();
         }
         display.requireText("0");
+    }
+
+    @Test
+    public void testSum() {
+        display.setText("0");
+        digits[5].focus();
+        digits[5].click();
+        plus.focus();
+        plus.click();
+        digits[6].focus();
+        digits[6].click();
+        calculate.focus();
+        calculate.click();
+        display.requireText("11");
+    }
+
+    @Test
+    public void testSubtract() {
+        display.setText("0");
+        digits[5].focus();
+        digits[5].click();
+        minus.focus();
+        minus.click();
+        digits[6].focus();
+        digits[6].click();
+        calculate.focus();
+        calculate.click();
+        display.requireText("-1");
     }
 }

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainFrame extends JFrame {
-    private static final String DEFAULT_NUM = "0";
+    public static final String DEFAULT_NUM = "0";
     static final String CAPTURE = "Just Calculator";
 
     private Operation operation;
