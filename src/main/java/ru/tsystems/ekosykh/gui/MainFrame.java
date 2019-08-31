@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
         display = new JTextField();
         display.setName("display");
         display.setEditable(false);
-        display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        display.setHorizontalAlignment(JTextField.TRAILING);
         display.setText(DEFAULT_NUM);
 
         JButton[] digits = new JButton[10];
