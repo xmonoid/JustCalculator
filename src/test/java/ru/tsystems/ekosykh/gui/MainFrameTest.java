@@ -23,6 +23,9 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
 
     private JButtonFixture plus;
     private JButtonFixture minus;
+    private JButtonFixture multiply;
+    private JButtonFixture divide;
+    private JButtonFixture modulo;
 
     private JButtonFixture calculate;
 
@@ -42,6 +45,9 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
         }
         plus = window.button("+");
         minus = window.button("-");
+        multiply = window.button("*");
+        divide = window.button("/");
+        modulo = window.button("\\");
         calculate = window.button("=");
         window.focus();
     }
@@ -131,5 +137,50 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
         calculate.focus();
         calculate.click();
         display.requireText("-1");
+    }
+
+    @Test
+    public void testMultiply() {
+        display.setText("0");
+        digits[5].focus();
+        digits[5].click();
+        multiply.focus();
+        multiply.click();
+        digits[6].focus();
+        digits[6].click();
+        calculate.focus();
+        calculate.click();
+        display.requireText("30");
+    }
+
+    @Test
+    public void testDivide() {
+        display.setText("0");
+        digits[3].focus();
+        digits[3].click();
+        digits[0].focus();
+        digits[0].click();
+        divide.focus();
+        divide.click();
+        digits[6].focus();
+        digits[6].click();
+        calculate.focus();
+        calculate.click();
+        display.requireText("5");
+    }
+
+    @Test
+    public void testModulo() {
+        display.setText("0");
+        digits[3].focus();
+        digits[3].click();
+        digits[3].click();
+        modulo.focus();
+        modulo.click();
+        digits[6].focus();
+        digits[6].click();
+        calculate.focus();
+        calculate.click();
+        display.requireText("3");
     }
 }
