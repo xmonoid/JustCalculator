@@ -8,17 +8,17 @@ import ru.tsystems.ekosykh.listener.Operation;
 import ru.tsystems.ekosykh.listener.OperationalButtonListener;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainFrame extends JFrame {
-    public static final String DEFAULT_NUM = "0";
+    private static final String DEFAULT_NUM = "0";
     static final String CAPTURE = "Just Calculator";
 
     private Operation operation;
     private int first;
+    private boolean refreshDisplay;
 
     private JTextField display;
 
@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
             String digit = Integer.toString(i);
             digits[i] = new JButton(digit);
             digits[i].setName(digit);
-            DigitalButtonListener listener = new DigitalButtonListener(display, digit);
+            DigitalButtonListener listener = new DigitalButtonListener(this, digit);
             digits[i].addActionListener(listener);
         }
 
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame {
         buttonDelete.addActionListener(deleteButtonListener);
         buttonDelete.setName(buttonDelete.getText());
         JButton bClear = new JButton("Clear");
-        ClearButtonListener clearButtonListener = new ClearButtonListener(display, DEFAULT_NUM);
+        ClearButtonListener clearButtonListener = new ClearButtonListener(this, DEFAULT_NUM);
         bClear.addActionListener(clearButtonListener);
 
         display.setBounds(30,40,280,30);
@@ -127,5 +127,13 @@ public class MainFrame extends JFrame {
 
     public Operation getOperation() {
         return operation;
+    }
+
+    public void setRefreshDisplay(boolean refreshDisplay) {
+        this.refreshDisplay = refreshDisplay;
+    }
+
+    public boolean isRefreshDisplay() {
+        return refreshDisplay;
     }
 }

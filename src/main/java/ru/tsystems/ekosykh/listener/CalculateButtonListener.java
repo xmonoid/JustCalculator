@@ -43,6 +43,7 @@ public class CalculateButtonListener implements ActionListener {
         default:
             throw new RuntimeException("Unknown operation");
         }
+        frame.setRefreshDisplay(true);
         display.setText(Integer.toString(result));
     }
 }

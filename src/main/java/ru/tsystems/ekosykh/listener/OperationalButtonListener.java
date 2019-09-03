@@ -23,6 +23,6 @@ public class OperationalButtonListener implements ActionListener {
         String first = display.getText();
         frame.setFirst(Integer.parseInt(first));
         frame.setOperation(operation);
-        display.setText(MainFrame.DEFAULT_NUM);
+        frame.setRefreshDisplay(true);
     }
 }
