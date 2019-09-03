@@ -105,9 +105,11 @@ public class MainFrameTest extends AssertJSwingJUnitTestCase {
 
         display.setText("1234567890");
         delete.focus();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i < 10; i++) {
             delete.click();
         }
+        display.requireText("1");
+        delete.click();
         display.requireText("0");
     }
 
